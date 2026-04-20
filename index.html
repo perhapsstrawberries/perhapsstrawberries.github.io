@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wendy Bui — Computational Biologist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    /* ─── TOKENS ──────────────────────────────────────────────── */
+    :root[data-theme="light"] {
+      --bg:           #F8F7F4;
+      --bg-surface:   #EFEDE8;
+      --bg-card:      #FFFFFF;
+      --text:         #1A1A1A;
+      --text-muted:   #6B6860;
+      --text-faint:   #A09D98;
+      --accent:       #3A7CA5;
+      --accent-hover: #2D6A90;
+      --border:       #E2DFD9;
+      --shadow:       rgba(0,0,0,0.06);
+      --tag-bg:       #EFEDE8;
+      --tag-text:     #5A5753;
+    }
+    :root[data-theme="dark"] {
+      --bg:           #0F0F0E;
+      --bg-surface:   #181817;
+      --bg-card:      #1E1E1C;
+      --text:         #E8E6E1;
+      --text-muted:   #8A8880;
+      --text-faint:   #555350;
+      --accent:       #5A9BAC;
+      --accent-hover: #4A8A9B;
+      --border:       #2A2A28;
+      --shadow:       rgba(0,0,0,0.35);
+      --tag-bg:       #252523;
+      --tag-text:     #9A9890;
+    }
+
+    /* ─── RESET ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', -apple-system, system-ui, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: 64px;
+      padding: 0 48px;
+      display: flex; align-items: center; justify-content: space-between;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      transition: background-color 0.25s ease, border-color 0.25s ease;
+    }
+    .nav-logo {
+      font-size: 14px; font-weight: 500; letter-spacing: 0.03em;
+      color: var(--text); text-decoration: none;
+    }
+    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+    .nav-links a {
+      font-size: 13px; color: var(--text-muted); text-decoration: none;
+      letter-spacing: 0.01em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-right { display: flex; align-items: center; gap: 16px; }
+    .theme-toggle {
+      width: 34px; height: 34px; border-radius: 8px;
+      border: 1px solid var(--border); background: var(--bg-surface);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); transition: all 0.2s;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--text-muted); }
+    .theme-toggle svg { width: 15px; height: 15px; }
+    [data-theme="dark"]  .icon-sun  { display: block; }
+    [data-theme="dark"]  .icon-moon { display: none;  }
+    [data-theme="light"] .icon-sun  { display: none;  }
+    [data-theme="light"] .icon-moon { display: block; }
+
+    /* ─── LAYOUT HELPERS ──────────────────────────────────────── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 48px; }
+    .divider { height: 1px; background: var(--border); }
+
+    /* ─── HERO ────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1200px; margin: 0 auto;
+      position: relative;
+    }
+    .hero-eyebrow {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 28px;
+    }
+    .hero-name {
+      font-size: clamp(52px, 7.5vw, 96px);
+      font-weight: 300; line-height: 0.95;
+      letter-spacing: -0.035em; color: var(--text);
+      margin-bottom: 14px;
+    }
+    .hero-vname {
+      font-size: 13px; color: var(--text-faint);
+      letter-spacing: 0.06em; font-weight: 400;
+      margin-bottom: 28px; font-style: italic;
+    }
+    .hero-subtitle {
+      font-size: clamp(15px, 2vw, 20px);
+      font-weight: 300; color: var(--text-muted);
+      letter-spacing: -0.01em; margin-bottom: 40px;
+      max-width: 560px; line-height: 1.5;
+    }
+    .hero-description {
+      font-size: 15px; color: var(--text-muted);
+      max-width: 520px; line-height: 1.8; margin-bottom: 52px;
+    }
+    .hero-actions { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute; bottom: 48px; left: 48px;
+      font-size: 11px; color: var(--text-faint);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .hero-scroll::before {
+      content: ''; display: block; width: 28px; height: 1px;
+      background: var(--text-faint);
+    }
+
+    /* ─── BUTTONS ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 11px 22px; border-radius: 8px;
+      font-family: inherit; font-size: 13px; font-weight: 500;
+      text-decoration: none; cursor: pointer; border: none;
+      letter-spacing: 0.01em; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--text-muted); }
+
+    /* ─── SECTION SCAFFOLDING ─────────────────────────────────── */
+    section { padding: 96px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.14em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 14px;
+    }
+    .section-heading {
+      font-size: clamp(30px, 3.8vw, 48px); font-weight: 300;
+      letter-spacing: -0.03em; color: var(--text);
+      margin-bottom: 52px; line-height: 1.05;
+    }
+
+    /* ─── PROJECTS ────────────────────────────────────────────── */
+    /* Featured card — large, 2-col */
+    .project-featured {
+      display: grid; grid-template-columns: 1fr 1fr;
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; background: var(--bg-card);
+      transition: box-shadow 0.25s ease;
+      margin-bottom: 16px;
+    }
+    .project-featured:hover { box-shadow: 0 12px 48px var(--shadow); }
+
+    /* Two smaller cards row */
+    .project-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    }
+    .project-sm {
+      border: 1px solid var(--border); border-radius: 16px;
+      overflow: hidden; background: var(--bg-card);
+      transition: box-shadow 0.25s ease;
+      display: flex; flex-direction: column;
+    }
+    .project-sm:hover { box-shadow: 0 8px 32px var(--shadow); }
+
+    .project-visual {
+      background: var(--bg-surface); position: relative;
+      overflow: hidden; min-height: 300px;
+    }
+    .project-sm .project-visual { min-height: 220px; }
+
+    .project-visual svg {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+    }
+
+    .project-body { padding: 44px; display: flex; flex-direction: column; justify-content: center; }
+    .project-sm .project-body { padding: 36px; }
+
+    .project-num {
+      font-size: 11px; font-weight: 500; letter-spacing: 0.1em;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-faint); margin-bottom: 18px;
+    }
+    .project-title {
+      font-size: 22px; font-weight: 500; letter-spacing: -0.02em;
+      color: var(--text); margin-bottom: 14px; line-height: 1.2;
+    }
+    .project-sm .project-title { font-size: 19px; }
+    .project-desc {
+      font-size: 14px; color: var(--text-muted);
+      line-height: 1.75; margin-bottom: 24px;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 28px; }
+    .tag {
+      font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 4px;
+      background: var(--tag-bg); color: var(--tag-text);
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.02em;
+    }
+    .project-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 13px; font-weight: 500; color: var(--accent);
+      text-decoration: none; transition: gap 0.2s; width: fit-content;
+    }
+    .project-link:hover { gap: 10px; }
+    .project-link svg { width: 13px; height: 13px; flex-shrink: 0; }
+
+    /* ─── STACK ───────────────────────────────────────────────── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+    }
+    .stack-item {
+      padding: 14px 18px; background: var(--bg-surface);
+      border: 1px solid var(--border); border-radius: 10px;
+      font-size: 12px; font-weight: 500; color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace; letter-spacing: 0.01em;
+      display: flex; align-items: center; gap: 10px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .stack-item:hover { color: var(--text); border-color: var(--accent); }
+    .stack-dot {
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--accent); flex-shrink: 0;
+    }
+
+    /* ─── ABOUT ───────────────────────────────────────────────── */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .about-text p {
+      font-size: 15px; color: var(--text-muted);
+      line-height: 1.85; margin-bottom: 20px;
+    }
+    .about-text p:last-of-type { margin-bottom: 0; }
+    .about-stats { display: flex; flex-direction: column; gap: 0; }
+    .stat {
+      padding: 28px 0; border-bottom: 1px solid var(--border);
+    }
+    .stat:first-child { padding-top: 0; }
+    .stat:last-child { border-bottom: none; padding-bottom: 0; }
+    .stat-number {
+      font-size: 32px; font-weight: 300; letter-spacing: -0.03em;
+      color: var(--text); line-height: 1; margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 12px; color: var(--text-faint);
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px 48px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-left { font-size: 13px; color: var(--text-faint); }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a {
+      font-size: 13px; color: var(--text-muted);
+      text-decoration: none; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text); }
+
+    /* ─── RESPONSIVE ──────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      .hero, section { padding-left: 24px; padding-right: 24px; }
+      .project-featured { grid-template-columns: 1fr; }
+      .project-row { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      footer { flex-direction: column; gap: 20px; padding: 36px 24px; text-align: center; }
+      .hero-scroll { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ─────────────────────────────────────────────────── -->
+<nav>
+  <a href="#" class="nav-logo">Wendy Bui</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="https://www.linkedin.com/in/wendy-bui-ngoc-thao-anh/" target="_blank">LinkedIn ↗</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://github.com/perhapsstrawberries" target="_blank" class="btn btn-ghost" style="padding:8px 16px; font-size:12px;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+    </button>
+  </div>
+</nav>
+
+<!-- ─── HERO ─────────────────────────────────────────────────── -->
+<div class="hero">
+  <div class="hero-eyebrow">Computational Biology · Bioinformatics · MS Boston University</div>
+  <h1 class="hero-name">Wendy Bui</h1>
+  <div class="hero-vname">Ngoc Thao Anh Bui</div>
+  <p class="hero-subtitle">Building rigorous pipelines and extracting biological meaning from genomic data.</p>
+  <p class="hero-description">
+    Graduate researcher at Boston University studying Bioinformatics. I work across single-cell RNA-seq,
+    chromatin accessibility, and bulk expression — writing reproducible Nextflow pipelines and downstream
+    analyses that connect molecular mechanisms to biological questions.
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      View projects
+    </a>
+    <a href="https://www.linkedin.com/in/wendy-bui-ngoc-thao-anh/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    <a href="mailto:wendybuinta@gmail.com" class="btn btn-ghost">Email</a>
+  </div>
+  <div class="hero-scroll">Scroll to explore</div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ─── PROJECTS ─────────────────────────────────────────────── -->
+<section id="projects">
+  <div class="section-label">Selected Work</div>
+  <h2 class="section-heading">Projects</h2>
+
+  <!-- ── Featured: ATAC-seq ─────────────────────────────────── -->
+  <div class="project-featured">
+
+    <!-- Visual: genome browser tracks -->
+    <div class="project-visual">
+      <svg viewBox="0 0 580 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="580" height="380" fill="var(--bg-surface)"/>
+
+        <!-- subtle grid -->
+        <line x1="0" y1="60" x2="580" y2="60" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="110" x2="580" y2="110" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="160" x2="580" y2="160" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="210" x2="580" y2="210" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="260" x2="580" y2="260" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="310" x2="580" y2="310" stroke="var(--border)" stroke-width="0.5"/>
+
+        <!-- chr coordinate bar at top -->
+        <rect x="30" y="18" width="520" height="6" rx="3" fill="var(--border)" opacity="0.7"/>
+        <rect x="240" y="16" width="100" height="10" rx="4" fill="var(--accent)" opacity="0.5"/>
+        <text x="278" y="14" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="middle">Spib locus</text>
+
+        <!-- Track labels + waveforms -->
+        <!-- WT tracks (text color) -->
+        <text x="18" y="48" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 WT1</text>
+        <path d="M30,55 Q80,55 95,45 Q110,35 125,55 Q160,55 175,42 Q185,32 200,55 Q240,55 260,38 Q275,24 292,38 Q308,55 340,55 Q360,48 375,55 Q420,55 440,44 Q450,36 462,55 L550,55" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.65"/>
+        <path d="M30,55 Q80,55 95,45 Q110,35 125,55 Q160,55 175,42 Q185,32 200,55 Q240,55 260,38 Q275,24 292,38 Q308,55 340,55 Q360,48 375,55 Q420,55 440,44 Q450,36 462,55 L550,55 L550,55 L30,55 Z" fill="var(--text)" opacity="0.07"/>
+
+        <text x="18" y="98" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 WT2</text>
+        <path d="M30,105 Q75,105 92,96 Q107,87 122,105 Q158,105 172,93 Q182,83 198,105 Q238,105 258,90 Q273,76 290,90 Q307,105 338,105 Q358,99 373,105 Q418,105 438,95 Q448,87 460,105 L550,105" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.55"/>
+        <path d="M30,105 Q75,105 92,96 Q107,87 122,105 Q158,105 172,93 Q182,83 198,105 Q238,105 258,90 Q273,76 290,90 Q307,105 338,105 Q358,99 373,105 Q418,105 438,95 Q448,87 460,105 L550,105 L550,105 L30,105 Z" fill="var(--text)" opacity="0.05"/>
+
+        <!-- KO tracks (accent color) -->
+        <text x="18" y="148" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 KO1</text>
+        <path d="M30,155 Q70,155 85,138 Q100,118 118,155 Q152,155 165,136 Q177,118 195,155 Q235,155 252,130 Q268,108 288,130 Q305,155 335,155 Q352,142 368,155 Q412,155 430,137 Q442,120 457,155 L550,155" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.95"/>
+        <path d="M30,155 Q70,155 85,138 Q100,118 118,155 Q152,155 165,136 Q177,118 195,155 Q235,155 252,130 Q268,108 288,130 Q305,155 335,155 Q352,142 368,155 Q412,155 430,137 Q442,120 457,155 L550,155 L550,155 L30,155 Z" fill="var(--accent)" opacity="0.15"/>
+
+        <text x="18" y="198" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 KO2</text>
+        <path d="M30,205 Q68,205 83,189 Q98,170 116,205 Q150,205 163,187 Q175,169 193,205 Q233,205 250,181 Q266,159 286,181 Q303,205 333,205 Q350,193 366,205 Q410,205 428,188 Q440,171 455,205 L550,205" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.8"/>
+        <path d="M30,205 Q68,205 83,189 Q98,170 116,205 Q150,205 163,187 Q175,169 193,205 Q233,205 250,181 Q266,159 286,181 Q303,205 333,205 Q350,193 366,205 Q410,205 428,188 Q440,171 455,205 L550,205 L550,205 L30,205 Z" fill="var(--accent)" opacity="0.12"/>
+
+        <!-- cDC2 tracks -->
+        <text x="18" y="248" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC2 WT1</text>
+        <path d="M30,255 Q78,255 93,248 Q105,242 118,255 Q160,255 173,246 Q182,238 195,255 Q238,255 255,244 Q268,234 282,244 Q298,255 335,255 Q352,250 365,255 Q420,255 435,247 Q445,240 458,255 L550,255" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.5"/>
+        <path d="M30,255 Q78,255 93,248 Q105,242 118,255 Q160,255 173,246 Q182,238 195,255 Q238,255 255,244 Q268,234 282,244 Q298,255 335,255 Q352,250 365,255 Q420,255 435,247 Q445,240 458,255 L550,255 L550,255 L30,255 Z" fill="var(--text)" opacity="0.04"/>
+
+        <text x="18" y="298" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC2 KO1</text>
+        <path d="M30,305 Q66,305 80,292 Q92,278 108,305 Q148,305 160,292 Q172,278 188,305 Q228,305 244,286 Q258,268 276,286 Q292,305 328,305 Q345,296 360,305 Q405,305 422,292 Q433,278 448,305 L550,305" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.75"/>
+        <path d="M30,305 Q66,305 80,292 Q92,278 108,305 Q148,305 160,292 Q172,278 188,305 Q228,305 244,286 Q258,268 276,286 Q292,305 328,305 Q345,296 360,305 Q405,305 422,292 Q433,278 448,305 L550,305 L550,305 L30,305 Z" fill="var(--accent)" opacity="0.12"/>
+
+        <!-- gene annotation bar -->
+        <rect x="30" y="326" width="520" height="2" rx="1" fill="var(--text-faint)" opacity="0.3"/>
+        <rect x="160" y="323" width="55" height="8" rx="3" fill="var(--accent)" opacity="0.45"/>
+        <rect x="270" y="323" width="70" height="8" rx="3" fill="var(--accent)" opacity="0.55"/>
+        <rect x="400" y="323" width="48" height="8" rx="3" fill="var(--accent)" opacity="0.4"/>
+        <text x="30" y="346" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">mm10 genes</text>
+        <text x="175" y="346" font-size="7" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">Spib</text>
+        <text x="285" y="346" font-size="7" fill="var(--accent)" font-family="JetBrains Mono,monospace" opacity="0.7">Myb</text>
+        <text x="410" y="346" font-size="7" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">Irf4</text>
+
+        <!-- condition legend -->
+        <rect x="460" y="356" width="8" height="8" rx="2" fill="var(--text)" opacity="0.5"/>
+        <text x="472" y="363" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">WT</text>
+        <rect x="500" y="356" width="8" height="8" rx="2" fill="var(--accent)" opacity="0.7"/>
+        <text x="512" y="363" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">KO</text>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="project-body">
+      <div class="project-num">01 / ATAC-seq</div>
+      <h3 class="project-title">HDAC1 Chromatin Accessibility in Dendritic Cells</h3>
+      <p class="project-desc">
+        End-to-end ATAC-seq pipeline in Nextflow DSL2 — from raw reads through QC, alignment, mitochondrial filtering, peak calling with MACS3, and DESeq2 differential accessibility. Integrates paired RNA-seq to map concordant chromatin and expression changes, reproducing published Figure 6 panels from the HDAC1 dendritic cell study.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Nextflow</span>
+        <span class="tag">Bowtie2</span>
+        <span class="tag">MACS3</span>
+        <span class="tag">DESeq2</span>
+        <span class="tag">HOMER</span>
+        <span class="tag">R</span>
+        <span class="tag">RNA-ATAC</span>
+      </div>
+      <a href="https://github.com/perhapsstrawberries/hdac1-atac-seq-analysis" target="_blank" class="project-link">
+        View repository
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Two smaller cards ──────────────────────────────────── -->
+  <div class="project-row">
+
+    <!-- Project 2: PBMC3K scRNA-seq -->
+    <div class="project-sm">
+      <div class="project-visual">
+        <!-- PBMC UMAP scatter art — standard Seurat cell types -->
+        <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <rect width="480" height="240" fill="var(--bg-surface)"/>
+
+          <!-- Cluster: CD4+ T cells (center-left, accent) — largest cluster -->
+          <circle cx="178" cy="130" r="4.5" fill="var(--accent)" opacity="0.90"/>
+          <circle cx="192" cy="118" r="4"   fill="var(--accent)" opacity="0.85"/>
+          <circle cx="165" cy="120" r="4"   fill="var(--accent)" opacity="0.80"/>
+          <circle cx="182" cy="108" r="3.5" fill="var(--accent)" opacity="0.80"/>
+          <circle cx="198" cy="128" r="3.5" fill="var(--accent)" opacity="0.80"/>
+          <circle cx="170" cy="108" r="3"   fill="var(--accent)" opacity="0.75"/>
+          <circle cx="188" cy="100" r="3.5" fill="var(--accent)" opacity="0.75"/>
+          <circle cx="158" cy="132" r="3"   fill="var(--accent)" opacity="0.70"/>
+          <circle cx="204" cy="112" r="3"   fill="var(--accent)" opacity="0.75"/>
+          <circle cx="175" cy="140" r="3"   fill="var(--accent)" opacity="0.70"/>
+          <circle cx="195" cy="140" r="2.5" fill="var(--accent)" opacity="0.65"/>
+          <circle cx="162" cy="112" r="2.5" fill="var(--accent)" opacity="0.65"/>
+          <text x="163" y="160" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">CD4+ T</text>
+
+          <!-- Cluster: CD8+ T cells (top center, slightly different blue) -->
+          <circle cx="248" cy="72"  r="3.5" fill="var(--accent)" opacity="0.80"/>
+          <circle cx="260" cy="62"  r="3"   fill="var(--accent)" opacity="0.70"/>
+          <circle cx="238" cy="65"  r="3.5" fill="var(--accent)" opacity="0.75"/>
+          <circle cx="252" cy="55"  r="2.5" fill="var(--accent)" opacity="0.65"/>
+          <circle cx="265" cy="75"  r="3"   fill="var(--accent)" opacity="0.72"/>
+          <circle cx="243" cy="82"  r="2.5" fill="var(--accent)" opacity="0.62"/>
+          <circle cx="256" cy="82"  r="2.5" fill="var(--accent)" opacity="0.60"/>
+          <text x="236" y="100" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">CD8+ T</text>
+
+          <!-- Cluster: B cells (right, muted purple) -->
+          <circle cx="368" cy="105" r="4"   fill="#7A6FB0" opacity="0.85"/>
+          <circle cx="382" cy="95"  r="3.5" fill="#7A6FB0" opacity="0.80"/>
+          <circle cx="356" cy="98"  r="3.5" fill="#7A6FB0" opacity="0.75"/>
+          <circle cx="374" cy="86"  r="3"   fill="#7A6FB0" opacity="0.72"/>
+          <circle cx="388" cy="110" r="3"   fill="#7A6FB0" opacity="0.78"/>
+          <circle cx="362" cy="115" r="2.5" fill="#7A6FB0" opacity="0.65"/>
+          <circle cx="378" cy="118" r="2.5" fill="#7A6FB0" opacity="0.65"/>
+          <circle cx="348" cy="108" r="2.5" fill="#7A6FB0" opacity="0.60"/>
+          <text x="350" y="135" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">B cells</text>
+
+          <!-- Cluster: NK cells (top right, warm orange) -->
+          <circle cx="322" cy="58"  r="3.5" fill="#D97B52" opacity="0.85"/>
+          <circle cx="335" cy="48"  r="3"   fill="#D97B52" opacity="0.78"/>
+          <circle cx="310" cy="52"  r="3.5" fill="#D97B52" opacity="0.80"/>
+          <circle cx="328" cy="42"  r="2.5" fill="#D97B52" opacity="0.70"/>
+          <circle cx="340" cy="62"  r="2.5" fill="#D97B52" opacity="0.72"/>
+          <circle cx="316" cy="65"  r="2.5" fill="#D97B52" opacity="0.65"/>
+          <text x="305" y="82" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">NK cells</text>
+
+          <!-- Cluster: CD14+ Monocytes (bottom right, muted green) -->
+          <circle cx="345" cy="168" r="4"   fill="#4E8A72" opacity="0.85"/>
+          <circle cx="358" cy="158" r="3.5" fill="#4E8A72" opacity="0.80"/>
+          <circle cx="332" cy="162" r="3.5" fill="#4E8A72" opacity="0.78"/>
+          <circle cx="348" cy="148" r="3"   fill="#4E8A72" opacity="0.75"/>
+          <circle cx="362" cy="175" r="3"   fill="#4E8A72" opacity="0.80"/>
+          <circle cx="338" cy="175" r="2.5" fill="#4E8A72" opacity="0.65"/>
+          <circle cx="370" cy="162" r="2.5" fill="#4E8A72" opacity="0.65"/>
+          <text x="325" y="195" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">Monocytes</text>
+
+          <!-- Cluster: Dendritic cells (bottom left, warm muted) -->
+          <circle cx="98"  cy="168" r="3"   fill="#B08060" opacity="0.80"/>
+          <circle cx="110" cy="158" r="2.5" fill="#B08060" opacity="0.75"/>
+          <circle cx="88"  cy="162" r="3"   fill="#B08060" opacity="0.78"/>
+          <circle cx="102" cy="150" r="2.5" fill="#B08060" opacity="0.70"/>
+          <circle cx="115" cy="172" r="2.5" fill="#B08060" opacity="0.72"/>
+          <text x="82" y="190" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">DCs</text>
+
+          <!-- scattered noise -->
+          <circle cx="228" cy="130" r="2"   fill="var(--text-faint)" opacity="0.22"/>
+          <circle cx="215" cy="148" r="1.5" fill="var(--text-faint)" opacity="0.18"/>
+          <circle cx="285" cy="118" r="2"   fill="var(--text-faint)" opacity="0.20"/>
+          <circle cx="270" cy="145" r="1.5" fill="var(--text-faint)" opacity="0.18"/>
+          <circle cx="140" cy="88"  r="2"   fill="var(--text-faint)" opacity="0.18"/>
+          <circle cx="210" cy="165" r="1.5" fill="var(--text-faint)" opacity="0.15"/>
+          <circle cx="300" cy="138" r="2"   fill="var(--text-faint)" opacity="0.17"/>
+          <circle cx="130" cy="148" r="1.5" fill="var(--text-faint)" opacity="0.15"/>
+          <circle cx="420" cy="138" r="2"   fill="var(--text-faint)" opacity="0.12"/>
+
+          <!-- UMAP axis labels -->
+          <text x="24" y="228" fill="var(--text-faint)" font-size="7" font-family="JetBrains Mono,monospace">UMAP 1</text>
+          <text x="24" y="218" fill="var(--text-faint)" font-size="7" font-family="JetBrains Mono,monospace" transform="rotate(-90,24,218) translate(-80,0)">UMAP 2</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-num">02 / scRNA-seq</div>
+        <h3 class="project-title">PBMC3K Single-cell Clustering</h3>
+        <p class="project-desc">
+          Reproduction of the Seurat PBMC3K guided tutorial — full scRNA-seq preprocessing, normalisation, PCA, graph-based clustering, and UMAP visualisation with canonical immune cell-type annotation using marker genes.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Seurat v5</span>
+          <span class="tag">R</span>
+          <span class="tag">scRNA-seq</span>
+          <span class="tag">UMAP</span>
+          <span class="tag">10x Genomics</span>
+        </div>
+        <a href="https://github.com/perhapsstrawberries/pbmc3k-seurat" target="_blank" class="project-link">
+          View repository
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Project 3: RNA-seq pipeline -->
+    <div class="project-sm">
+      <div class="project-visual">
+        <!-- Pipeline flow diagram -->
+        <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="arr" markerWidth="6" markerHeight="4" refX="5.5" refY="2" orient="auto">
+              <polygon points="0 0, 6 2, 0 4" fill="var(--accent)" opacity="0.65"/>
+            </marker>
+          </defs>
+          <rect width="480" height="240" fill="var(--bg-surface)"/>
+
+          <!-- Header label -->
+          <text x="240" y="38" font-size="10" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle" letter-spacing="0.12em">NEXTFLOW DSL2</text>
+          <line x1="40" y1="46" x2="440" y2="46" stroke="var(--border)" stroke-width="0.8" stroke-dasharray="4,3"/>
+
+          <!-- Step boxes — centered vertically at y=110 -->
+          <!-- FastQC -->
+          <rect x="28"  y="90" width="60" height="38" rx="7" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="58"  y="107" font-size="8.5" fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="middle" font-weight="500">FastQC</text>
+          <text x="58"  y="120" font-size="7"   fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="middle">QC</text>
+
+          <line x1="88"  y1="109" x2="102" y2="109" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)" opacity="0.6"/>
+
+          <!-- Cutadapt -->
+          <rect x="102" y="90" width="68" height="38" rx="7" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="136" y="107" font-size="8"   fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="middle" font-weight="500">Cutadapt</text>
+          <text x="136" y="120" font-size="7"   fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="middle">Trimming</text>
+
+          <line x1="170" y1="109" x2="185" y2="109" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)" opacity="0.6"/>
+
+          <!-- STAR (accent filled) -->
+          <rect x="185" y="90" width="62" height="38" rx="7" fill="var(--accent)" stroke="none"/>
+          <text x="216" y="107" font-size="10"  fill="#fff" font-family="JetBrains Mono,monospace" text-anchor="middle" font-weight="600">STAR</text>
+          <text x="216" y="120" font-size="7"   fill="rgba(255,255,255,0.7)" font-family="JetBrains Mono,monospace" text-anchor="middle">Align</text>
+
+          <line x1="247" y1="109" x2="262" y2="109" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)" opacity="0.6"/>
+
+          <!-- featureCounts -->
+          <rect x="262" y="90" width="76" height="38" rx="7" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1.5"/>
+          <text x="300" y="106" font-size="7.5" fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="middle" font-weight="500">featureCounts</text>
+          <text x="300" y="120" font-size="7"   fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="middle">Quantify</text>
+
+          <line x1="338" y1="109" x2="352" y2="109" stroke="var(--accent)" stroke-width="1.5" marker-end="url(#arr)" opacity="0.6"/>
+
+          <!-- DESeq2 (accent border) -->
+          <rect x="352" y="90" width="68" height="38" rx="7" fill="var(--bg-card)" stroke="var(--accent)" stroke-width="1.8"/>
+          <text x="386" y="107" font-size="9"   fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="middle" font-weight="600">DESeq2</text>
+          <text x="386" y="120" font-size="7"   fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="middle">DE</text>
+
+          <!-- Arrow down from DESeq2 to outputs -->
+          <line x1="386" y1="128" x2="386" y2="145" stroke="var(--accent)" stroke-width="1.2" marker-end="url(#arr)" opacity="0.5"/>
+
+          <!-- Output labels -->
+          <text x="386" y="163" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif" text-anchor="middle">Volcano · MA · Heatmap</text>
+
+          <!-- Mini MA scatter preview -->
+          <rect x="120" y="158" width="110" height="56" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+          <text x="175" y="172" font-size="7.5" fill="var(--text-faint)" font-family="DM Sans,sans-serif" text-anchor="middle">MA plot</text>
+          <line x1="128" y1="195" x2="222" y2="195" stroke="var(--border)" stroke-width="0.8"/>
+          <circle cx="135" cy="190" r="2"   fill="var(--text-faint)" opacity="0.35"/>
+          <circle cx="148" cy="183" r="2"   fill="var(--text-faint)" opacity="0.40"/>
+          <circle cx="160" cy="192" r="2"   fill="var(--text-faint)" opacity="0.35"/>
+          <circle cx="172" cy="178" r="2.5" fill="var(--accent)"    opacity="0.75"/>
+          <circle cx="184" cy="186" r="2"   fill="var(--text-faint)" opacity="0.40"/>
+          <circle cx="196" cy="172" r="3"   fill="var(--accent)"    opacity="0.80"/>
+          <circle cx="210" cy="184" r="2"   fill="var(--text-faint)" opacity="0.35"/>
+          <circle cx="168" cy="200" r="2"   fill="var(--accent)"    opacity="0.60"/>
+          <circle cx="142" cy="200" r="1.5" fill="var(--text-faint)" opacity="0.30"/>
+
+          <!-- MultiQC badge -->
+          <rect x="252" y="163" width="72" height="28" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+          <text x="288" y="181" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">MultiQC</text>
+        </svg>
+      </div>
+      <div class="project-body">
+        <div class="project-num">03 / Bulk RNA-seq</div>
+        <h3 class="project-title">RNA-seq Nextflow Pipeline</h3>
+        <p class="project-desc">
+          Modular, reproducible bulk RNA-seq workflow in Nextflow DSL2. STAR alignment, featureCounts quantification, DESeq2 differential expression, and MultiQC reporting — parameterised for re-use across studies and conditions.
+        </p>
+        <div class="project-tags">
+          <span class="tag">Nextflow</span>
+          <span class="tag">STAR</span>
+          <span class="tag">DESeq2</span>
+          <span class="tag">MultiQC</span>
+          <span class="tag">Bash</span>
+        </div>
+        <a href="https://github.com/perhapsstrawberries/rnaseq-nextflow-star-deseq2" target="_blank" class="project-link">
+          View repository
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div><!-- /project-row -->
+
+  <!-- Also see -->
+  <div style="margin-top:32px; padding:28px 36px; background:var(--bg-surface); border:1px solid var(--border); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+    <div>
+      <div style="font-size:12px; font-weight:500; color:var(--text-muted); margin-bottom:6px; letter-spacing:0.04em;">Also in the repos</div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <span class="tag">ChIP-seq Nextflow</span>
+        <span class="tag">Hybrid Genome Assembly</span>
+        <span class="tag">Spatial Transcriptomics</span>
+      </div>
+    </div>
+    <a href="https://github.com/perhapsstrawberries" target="_blank" class="project-link" style="font-size:13px;">
+      See all on GitHub
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+    </a>
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── STACK ────────────────────────────────────────────────── -->
+<section id="stack">
+  <div class="section-label">Technical Skills</div>
+  <h2 class="section-heading">Stack</h2>
+  <div class="stack-grid">
+    <div class="stack-item"><div class="stack-dot"></div>R / ggplot2</div>
+    <div class="stack-item"><div class="stack-dot"></div>Python</div>
+    <div class="stack-item"><div class="stack-dot"></div>Nextflow DSL2</div>
+    <div class="stack-item"><div class="stack-dot"></div>Seurat / v5</div>
+    <div class="stack-item"><div class="stack-dot"></div>DESeq2</div>
+    <div class="stack-item"><div class="stack-dot"></div>hdWGCNA</div>
+    <div class="stack-item"><div class="stack-dot"></div>STAR</div>
+    <div class="stack-item"><div class="stack-dot"></div>Bowtie2</div>
+    <div class="stack-item"><div class="stack-dot"></div>MACS3</div>
+    <div class="stack-item"><div class="stack-dot"></div>HOMER / Enrichr</div>
+    <div class="stack-item"><div class="stack-dot"></div>Bash / Shell</div>
+    <div class="stack-item"><div class="stack-dot"></div>HPC / SLURM</div>
+    <div class="stack-item"><div class="stack-dot"></div>Git</div>
+    <div class="stack-item"><div class="stack-dot"></div>Conda</div>
+    <div class="stack-item"><div class="stack-dot"></div>R Markdown</div>
+    <div class="stack-item"><div class="stack-dot"></div>Linux</div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── ABOUT ────────────────────────────────────────────────── -->
+<section id="about">
+  <div class="section-label">Background</div>
+  <h2 class="section-heading">About</h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        I'm a computational biology graduate student at Boston University (M.S. Bioinformatics, expected 2026), currently working as a Graduate Research Assistant in the TCW Lab at BU School of Medicine — analysing single-cell RNA-seq datasets related to Alzheimer's disease and contributing to an interactive web interface for single-cell data exploration.
+      </p>
+      <p>
+        Before BU, I completed a double degree in Applied Data Science and Communication at Western Sydney University (Vietnam campus, 2024), where I developed a foundation in machine learning pipelines and large-scale data analysis. I also worked as a Data Analyst at VieON and as a Research Assistant with King's College London and Cardiff University.
+      </p>
+      <p>
+        I'm drawn to the engineering side of bioinformatics — reproducible pipelines, clean workflows, and analyses that actually hold up. My current interests are co-expression network analysis, multi-omic integration, and the molecular biology of neurodegeneration.
+      </p>
+      <div style="margin-top:36px; display:flex; gap:12px; flex-wrap:wrap;">
+        <a href="https://github.com/perhapsstrawberries" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/wendy-bui-ngoc-thao-anh/" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+        <a href="mailto:wendybuinta@gmail.com" class="btn btn-ghost">Email ↗</a>
+      </div>
+    </div>
+    <div class="about-stats">
+      <div class="stat">
+        <div class="stat-number">BU</div>
+        <div class="stat-label">M.S. Bioinformatics · Expected Aug 2026</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">TCW Lab</div>
+        <div class="stat-label">Graduate Research Assistant · Jan 2026–</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Assay types (scRNA · ATAC · bulk · ChIP)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">R + Python</div>
+        <div class="stat-label">Primary analysis languages</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-left">© 2026 Wendy Bui · Boston University Bioinformatics</div>
+  <div class="footer-links">
+    <a href="https://github.com/perhapsstrawberries" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/wendy-bui-ngoc-thao-anh/" target="_blank">LinkedIn</a>
+    <a href="mailto:wendybuinta@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+  function toggleTheme() {
+    const root = document.documentElement;
+    const next = root.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('portfolio-theme', next); } catch(e){}
+  }
+
+  // Restore saved theme
+  try {
+    const saved = localStorage.getItem('portfolio-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch(e){}
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
