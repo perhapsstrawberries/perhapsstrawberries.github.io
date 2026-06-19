@@ -361,207 +361,100 @@
   <div class="section-label">Selected Work</div>
   <h2 class="section-heading">Projects</h2>
 
-  <!-- ── Featured: ATAC-seq ─────────────────────────────────── -->
+  <!-- ── Featured: Aging signatures in familial AD organoids (GSE301700) ── -->
   <div class="project-featured">
 
-    <!-- Visual: genome browser tracks -->
+    <!-- Visual: aging-gene suppression by cell type (per-cell-type frac_down) -->
     <div class="project-visual">
       <svg viewBox="0 0 580 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <rect width="580" height="380" fill="var(--bg-surface)"/>
 
-        <!-- subtle grid -->
-        <line x1="0" y1="60" x2="580" y2="60" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="110" x2="580" y2="110" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="160" x2="580" y2="160" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="210" x2="580" y2="210" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="260" x2="580" y2="260" stroke="var(--border)" stroke-width="0.5"/>
-        <line x1="0" y1="310" x2="580" y2="310" stroke="var(--border)" stroke-width="0.5"/>
+        <!-- Title -->
+        <text x="36" y="34" font-size="11" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">Aging-gene suppression by cell type</text>
+        <text x="36" y="50" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">Fraction of 124 conserved aging genes downregulated in familial AD</text>
 
-        <!-- chr coordinate bar at top -->
-        <rect x="30" y="18" width="520" height="6" rx="3" fill="var(--border)" opacity="0.7"/>
-        <rect x="240" y="16" width="100" height="10" rx="4" fill="var(--accent)" opacity="0.5"/>
-        <text x="278" y="14" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="middle">Spib locus</text>
+        <!-- 50% reference line (chance) -->
+        <line x1="340" y1="64" x2="340" y2="312" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
+        <text x="340" y="328" font-size="7.5" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">50%</text>
 
-        <!-- Track labels + waveforms -->
-        <!-- WT tracks (text color) -->
-        <text x="18" y="48" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 WT1</text>
-        <path d="M30,55 Q80,55 95,45 Q110,35 125,55 Q160,55 175,42 Q185,32 200,55 Q240,55 260,38 Q275,24 292,38 Q308,55 340,55 Q360,48 375,55 Q420,55 440,44 Q450,36 462,55 L550,55" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.65"/>
-        <path d="M30,55 Q80,55 95,45 Q110,35 125,55 Q160,55 175,42 Q185,32 200,55 Q240,55 260,38 Q275,24 292,38 Q308,55 340,55 Q360,48 375,55 Q420,55 440,44 Q450,36 462,55 L550,55 L550,55 L30,55 Z" fill="var(--text)" opacity="0.07"/>
+        <!-- 0% axis -->
+        <line x1="150" y1="64" x2="150" y2="312" stroke="var(--border)" stroke-width="1"/>
+        <text x="150" y="328" font-size="7.5" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">0%</text>
+        <text x="530" y="328" font-size="7.5" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">100%</text>
 
-        <text x="18" y="98" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 WT2</text>
-        <path d="M30,105 Q75,105 92,96 Q107,87 122,105 Q158,105 172,93 Q182,83 198,105 Q238,105 258,90 Q273,76 290,90 Q307,105 338,105 Q358,99 373,105 Q418,105 438,95 Q448,87 460,105 L550,105" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.55"/>
-        <path d="M30,105 Q75,105 92,96 Q107,87 122,105 Q158,105 172,93 Q182,83 198,105 Q238,105 258,90 Q273,76 290,90 Q307,105 338,105 Q358,99 373,105 Q418,105 438,95 Q448,87 460,105 L550,105 L550,105 L30,105 Z" fill="var(--text)" opacity="0.05"/>
+        <!-- Excitatory Neuron — 0.699, sig (aging-like) -->
+        <text x="142" y="85" font-size="8.5" fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="end">Excitatory N</text>
+        <rect x="150" y="70" width="266" height="22" rx="3" fill="var(--accent)" opacity="0.95"/>
+        <text x="424" y="85" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace">70% &#42;</text>
 
-        <!-- KO tracks (accent color) -->
-        <text x="18" y="148" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 KO1</text>
-        <path d="M30,155 Q70,155 85,138 Q100,118 118,155 Q152,155 165,136 Q177,118 195,155 Q235,155 252,130 Q268,108 288,130 Q305,155 335,155 Q352,142 368,155 Q412,155 430,137 Q442,120 457,155 L550,155" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.95"/>
-        <path d="M30,155 Q70,155 85,138 Q100,118 118,155 Q152,155 165,136 Q177,118 195,155 Q235,155 252,130 Q268,108 288,130 Q305,155 335,155 Q352,142 368,155 Q412,155 430,137 Q442,120 457,155 L550,155 L550,155 L30,155 Z" fill="var(--accent)" opacity="0.15"/>
+        <!-- Inhibitory Neuron — 0.691, sig (aging-like) -->
+        <text x="142" y="127" font-size="8.5" fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="end">Inhibitory N</text>
+        <rect x="150" y="112" width="263" height="22" rx="3" fill="var(--accent)" opacity="0.95"/>
+        <text x="421" y="127" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace">69% &#42;</text>
 
-        <text x="18" y="198" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 KO2</text>
-        <path d="M30,205 Q68,205 83,189 Q98,170 116,205 Q150,205 163,187 Q175,169 193,205 Q233,205 250,181 Q266,159 286,181 Q303,205 333,205 Q350,193 366,205 Q410,205 428,188 Q440,171 455,205 L550,205" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.8"/>
-        <path d="M30,205 Q68,205 83,189 Q98,170 116,205 Q150,205 163,187 Q175,169 193,205 Q233,205 250,181 Q266,159 286,181 Q303,205 333,205 Q350,193 366,205 Q410,205 428,188 Q440,171 455,205 L550,205 L550,205 L30,205 Z" fill="var(--accent)" opacity="0.12"/>
+        <!-- Astrocyte — 0.585, n.s. -->
+        <text x="142" y="169" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">Astrocyte</text>
+        <rect x="150" y="154" width="222" height="22" rx="3" fill="var(--accent)" opacity="0.45"/>
+        <text x="380" y="169" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">59%</text>
 
-        <!-- cDC2 tracks -->
-        <text x="18" y="248" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC2 WT1</text>
-        <path d="M30,255 Q78,255 93,248 Q105,242 118,255 Q160,255 173,246 Q182,238 195,255 Q238,255 255,244 Q268,234 282,244 Q298,255 335,255 Q352,250 365,255 Q420,255 435,247 Q445,240 458,255 L550,255" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.5"/>
-        <path d="M30,255 Q78,255 93,248 Q105,242 118,255 Q160,255 173,246 Q182,238 195,255 Q238,255 255,244 Q268,234 282,244 Q298,255 335,255 Q352,250 365,255 Q420,255 435,247 Q445,240 458,255 L550,255 L550,255 L30,255 Z" fill="var(--text)" opacity="0.04"/>
+        <!-- Neural Progenitor — 0.427, anti-aging -->
+        <text x="142" y="211" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">Neural prog.</text>
+        <rect x="150" y="196" width="162" height="22" rx="3" fill="#D97B52" opacity="0.55"/>
+        <text x="320" y="211" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">43%</text>
 
-        <text x="18" y="298" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC2 KO1</text>
-        <path d="M30,305 Q66,305 80,292 Q92,278 108,305 Q148,305 160,292 Q172,278 188,305 Q228,305 244,286 Q258,268 276,286 Q292,305 328,305 Q345,296 360,305 Q405,305 422,292 Q433,278 448,305 L550,305" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.75"/>
-        <path d="M30,305 Q66,305 80,292 Q92,278 108,305 Q148,305 160,292 Q172,278 188,305 Q228,305 244,286 Q258,268 276,286 Q292,305 328,305 Q345,296 360,305 Q405,305 422,292 Q433,278 448,305 L550,305 L550,305 L30,305 Z" fill="var(--accent)" opacity="0.12"/>
+        <!-- OPC — 0.372, anti-aging (underpowered) -->
+        <text x="142" y="253" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">OPC</text>
+        <rect x="150" y="238" width="141" height="22" rx="3" fill="#D97B52" opacity="0.45"/>
+        <text x="299" y="253" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">37%</text>
 
-        <!-- gene annotation bar -->
-        <rect x="30" y="326" width="520" height="2" rx="1" fill="var(--text-faint)" opacity="0.3"/>
-        <rect x="160" y="323" width="55" height="8" rx="3" fill="var(--accent)" opacity="0.45"/>
-        <rect x="270" y="323" width="70" height="8" rx="3" fill="var(--accent)" opacity="0.55"/>
-        <rect x="400" y="323" width="48" height="8" rx="3" fill="var(--accent)" opacity="0.4"/>
-        <text x="30" y="346" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">mm10 genes</text>
-        <text x="175" y="346" font-size="7" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">Spib</text>
-        <text x="285" y="346" font-size="7" fill="var(--accent)" font-family="JetBrains Mono,monospace" opacity="0.7">Myb</text>
-        <text x="410" y="346" font-size="7" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">Irf4</text>
+        <!-- Cycling — 0.172, anti-aging -->
+        <text x="142" y="295" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">Cycling</text>
+        <rect x="150" y="280" width="65" height="22" rx="3" fill="#D97B52" opacity="0.7"/>
+        <text x="223" y="295" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">17%</text>
 
-        <!-- condition legend -->
-        <rect x="460" y="356" width="8" height="8" rx="2" fill="var(--text)" opacity="0.5"/>
-        <text x="472" y="363" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">WT</text>
-        <rect x="500" y="356" width="8" height="8" rx="2" fill="var(--accent)" opacity="0.7"/>
-        <text x="512" y="363" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">KO</text>
+        <!-- baseline -->
+        <line x1="150" y1="312" x2="530" y2="312" stroke="var(--border)" stroke-width="1"/>
+
+        <!-- legend -->
+        <rect x="150" y="352" width="9" height="9" rx="2" fill="var(--accent)" opacity="0.9"/>
+        <text x="163" y="360" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">aging-like (&gt;50% down)</text>
+        <rect x="320" y="352" width="9" height="9" rx="2" fill="#D97B52" opacity="0.7"/>
+        <text x="333" y="360" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">anti-aging</text>
+        <text x="430" y="360" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">&#42; padj &lt; 0.05</text>
       </svg>
     </div>
 
     <!-- Content -->
     <div class="project-body">
-      <div class="project-num">01 / ATAC-seq</div>
-      <h3 class="project-title">HDAC1 Chromatin Accessibility in Dendritic Cells</h3>
+      <div class="project-num">01 / scRNA-seq · aging signatures</div>
+      <h3 class="project-title">Aging Signatures in Familial Alzheimer's Organoids</h3>
       <p class="project-desc">
-        End-to-end ATAC-seq pipeline in Nextflow DSL2 — from raw reads through QC, alignment, mitochondrial filtering, peak calling with MACS3, and DESeq2 differential accessibility. Integrates paired RNA-seq to map concordant chromatin and expression changes, reproducing published Figure 6 panels from the HDAC1 dendritic cell study.
+        Single-cell reanalysis of a public iPSC-derived cortical-organoid dataset (GEO: GSE301700) asking whether familial AD mutations — PSEN1ΔE9, PSEN1M146V, APPswe — drive aging-like transcriptional change. Pseudobulk DESeq2 across ~56k cells / 14 samples, scored against the 124 conserved aging genes (Jeffries et al., Nature 2025) per cell type. The aging core is significantly suppressed in excitatory and inhibitory neurons (padj 3e-7 / 5e-4), driven by PSEN1M146V and APPswe — mirroring an in-house APOE4 analysis.
       </p>
       <div class="project-tags">
-        <span class="tag">Nextflow</span>
-        <span class="tag">Bowtie2</span>
-        <span class="tag">MACS3</span>
+        <span class="tag">Seurat v5</span>
+        <span class="tag">Pseudobulk</span>
         <span class="tag">DESeq2</span>
-        <span class="tag">HOMER</span>
+        <span class="tag">fgsea</span>
+        <span class="tag">scRNA-seq</span>
         <span class="tag">R</span>
-        <span class="tag">RNA-ATAC</span>
+        <span class="tag">GEO</span>
       </div>
-      <a href="https://github.com/perhapsstrawberries/hdac1-atac-seq-analysis" target="_blank" class="project-link">
-        View repository
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
-      </a>
-    </div>
-  </div>
-
-  <!-- ── Two smaller cards ──────────────────────────────────── -->
-  <div class="project-row">
-
-    <!-- Project 2: PBMC3K scRNA-seq -->
-    <div class="project-sm">
-      <div class="project-visual">
-        <!-- PBMC UMAP scatter art — standard Seurat cell types -->
-        <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="480" height="240" fill="var(--bg-surface)"/>
-
-          <!-- Cluster: CD4+ T cells (center-left, accent) — largest cluster -->
-          <circle cx="178" cy="130" r="4.5" fill="var(--accent)" opacity="0.90"/>
-          <circle cx="192" cy="118" r="4"   fill="var(--accent)" opacity="0.85"/>
-          <circle cx="165" cy="120" r="4"   fill="var(--accent)" opacity="0.80"/>
-          <circle cx="182" cy="108" r="3.5" fill="var(--accent)" opacity="0.80"/>
-          <circle cx="198" cy="128" r="3.5" fill="var(--accent)" opacity="0.80"/>
-          <circle cx="170" cy="108" r="3"   fill="var(--accent)" opacity="0.75"/>
-          <circle cx="188" cy="100" r="3.5" fill="var(--accent)" opacity="0.75"/>
-          <circle cx="158" cy="132" r="3"   fill="var(--accent)" opacity="0.70"/>
-          <circle cx="204" cy="112" r="3"   fill="var(--accent)" opacity="0.75"/>
-          <circle cx="175" cy="140" r="3"   fill="var(--accent)" opacity="0.70"/>
-          <circle cx="195" cy="140" r="2.5" fill="var(--accent)" opacity="0.65"/>
-          <circle cx="162" cy="112" r="2.5" fill="var(--accent)" opacity="0.65"/>
-          <text x="163" y="160" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">CD4+ T</text>
-
-          <!-- Cluster: CD8+ T cells (top center, slightly different blue) -->
-          <circle cx="248" cy="72"  r="3.5" fill="var(--accent)" opacity="0.80"/>
-          <circle cx="260" cy="62"  r="3"   fill="var(--accent)" opacity="0.70"/>
-          <circle cx="238" cy="65"  r="3.5" fill="var(--accent)" opacity="0.75"/>
-          <circle cx="252" cy="55"  r="2.5" fill="var(--accent)" opacity="0.65"/>
-          <circle cx="265" cy="75"  r="3"   fill="var(--accent)" opacity="0.72"/>
-          <circle cx="243" cy="82"  r="2.5" fill="var(--accent)" opacity="0.62"/>
-          <circle cx="256" cy="82"  r="2.5" fill="var(--accent)" opacity="0.60"/>
-          <text x="236" y="100" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">CD8+ T</text>
-
-          <!-- Cluster: B cells (right, muted purple) -->
-          <circle cx="368" cy="105" r="4"   fill="#7A6FB0" opacity="0.85"/>
-          <circle cx="382" cy="95"  r="3.5" fill="#7A6FB0" opacity="0.80"/>
-          <circle cx="356" cy="98"  r="3.5" fill="#7A6FB0" opacity="0.75"/>
-          <circle cx="374" cy="86"  r="3"   fill="#7A6FB0" opacity="0.72"/>
-          <circle cx="388" cy="110" r="3"   fill="#7A6FB0" opacity="0.78"/>
-          <circle cx="362" cy="115" r="2.5" fill="#7A6FB0" opacity="0.65"/>
-          <circle cx="378" cy="118" r="2.5" fill="#7A6FB0" opacity="0.65"/>
-          <circle cx="348" cy="108" r="2.5" fill="#7A6FB0" opacity="0.60"/>
-          <text x="350" y="135" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">B cells</text>
-
-          <!-- Cluster: NK cells (top right, warm orange) -->
-          <circle cx="322" cy="58"  r="3.5" fill="#D97B52" opacity="0.85"/>
-          <circle cx="335" cy="48"  r="3"   fill="#D97B52" opacity="0.78"/>
-          <circle cx="310" cy="52"  r="3.5" fill="#D97B52" opacity="0.80"/>
-          <circle cx="328" cy="42"  r="2.5" fill="#D97B52" opacity="0.70"/>
-          <circle cx="340" cy="62"  r="2.5" fill="#D97B52" opacity="0.72"/>
-          <circle cx="316" cy="65"  r="2.5" fill="#D97B52" opacity="0.65"/>
-          <text x="305" y="82" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">NK cells</text>
-
-          <!-- Cluster: CD14+ Monocytes (bottom right, muted green) -->
-          <circle cx="345" cy="168" r="4"   fill="#4E8A72" opacity="0.85"/>
-          <circle cx="358" cy="158" r="3.5" fill="#4E8A72" opacity="0.80"/>
-          <circle cx="332" cy="162" r="3.5" fill="#4E8A72" opacity="0.78"/>
-          <circle cx="348" cy="148" r="3"   fill="#4E8A72" opacity="0.75"/>
-          <circle cx="362" cy="175" r="3"   fill="#4E8A72" opacity="0.80"/>
-          <circle cx="338" cy="175" r="2.5" fill="#4E8A72" opacity="0.65"/>
-          <circle cx="370" cy="162" r="2.5" fill="#4E8A72" opacity="0.65"/>
-          <text x="325" y="195" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">Monocytes</text>
-
-          <!-- Cluster: Dendritic cells (bottom left, warm muted) -->
-          <circle cx="98"  cy="168" r="3"   fill="#B08060" opacity="0.80"/>
-          <circle cx="110" cy="158" r="2.5" fill="#B08060" opacity="0.75"/>
-          <circle cx="88"  cy="162" r="3"   fill="#B08060" opacity="0.78"/>
-          <circle cx="102" cy="150" r="2.5" fill="#B08060" opacity="0.70"/>
-          <circle cx="115" cy="172" r="2.5" fill="#B08060" opacity="0.72"/>
-          <text x="82" y="190" fill="var(--text-faint)" font-size="7.5" font-family="DM Sans,sans-serif">DCs</text>
-
-          <!-- scattered noise -->
-          <circle cx="228" cy="130" r="2"   fill="var(--text-faint)" opacity="0.22"/>
-          <circle cx="215" cy="148" r="1.5" fill="var(--text-faint)" opacity="0.18"/>
-          <circle cx="285" cy="118" r="2"   fill="var(--text-faint)" opacity="0.20"/>
-          <circle cx="270" cy="145" r="1.5" fill="var(--text-faint)" opacity="0.18"/>
-          <circle cx="140" cy="88"  r="2"   fill="var(--text-faint)" opacity="0.18"/>
-          <circle cx="210" cy="165" r="1.5" fill="var(--text-faint)" opacity="0.15"/>
-          <circle cx="300" cy="138" r="2"   fill="var(--text-faint)" opacity="0.17"/>
-          <circle cx="130" cy="148" r="1.5" fill="var(--text-faint)" opacity="0.15"/>
-          <circle cx="420" cy="138" r="2"   fill="var(--text-faint)" opacity="0.12"/>
-
-          <!-- UMAP axis labels -->
-          <text x="24" y="228" fill="var(--text-faint)" font-size="7" font-family="JetBrains Mono,monospace">UMAP 1</text>
-          <text x="24" y="218" fill="var(--text-faint)" font-size="7" font-family="JetBrains Mono,monospace" transform="rotate(-90,24,218) translate(-80,0)">UMAP 2</text>
-        </svg>
-      </div>
-      <div class="project-body">
-        <div class="project-num">02 / scRNA-seq</div>
-        <h3 class="project-title">PBMC3K Single-cell Clustering</h3>
-        <p class="project-desc">
-          Reproduction of the Seurat PBMC3K guided tutorial — full scRNA-seq preprocessing, normalisation, PCA, graph-based clustering, and UMAP visualisation with canonical immune cell-type annotation using marker genes.
-        </p>
-        <div class="project-tags">
-          <span class="tag">Seurat v5</span>
-          <span class="tag">R</span>
-          <span class="tag">scRNA-seq</span>
-          <span class="tag">UMAP</span>
-          <span class="tag">10x Genomics</span>
-        </div>
-        <a href="https://github.com/perhapsstrawberries/pbmc3k-seurat" target="_blank" class="project-link">
+      <div class="project-links">
+        <a href="https://github.com/perhapsstrawberries/familial-ad-aging-scrnaseq" target="_blank" class="project-link">
           View repository
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301700" target="_blank" class="project-link secondary">
+          GEO: GSE301700
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
     </div>
+  </div>
 
-    <!-- Project 3: RNA-seq pipeline -->
-    <div class="project-sm">
+  <!-- ── Featured: RNA-seq Nextflow pipeline ── -->
+  <div class="project-featured" style="margin-top:16px;">
       <div class="project-visual">
         <!-- Pipeline flow diagram -->
         <svg viewBox="0 0 480 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
@@ -636,7 +529,7 @@
         </svg>
       </div>
       <div class="project-body">
-        <div class="project-num">03 / Bulk RNA-seq</div>
+        <div class="project-num">02 / Bulk RNA-seq</div>
         <h3 class="project-title">RNA-seq Nextflow Pipeline</h3>
         <p class="project-desc">
           Modular, reproducible bulk RNA-seq workflow in Nextflow DSL2. STAR alignment, featureCounts quantification, DESeq2 differential expression, and MultiQC reporting — parameterised for re-use across studies and conditions.
@@ -655,94 +548,169 @@
       </div>
     </div>
 
-  </div><!-- /project-row -->
+  <!-- ── Featured: ATAC-seq ─────────────────────────────────── -->
+  <div class="project-featured">
 
-  <!-- ── Featured: Aging signatures in familial AD organoids (GSE301700) ── -->
-  <div class="project-featured" style="margin-top:16px;">
-
-    <!-- Visual: aging-gene suppression by cell type (per-cell-type frac_down) -->
+    <!-- Visual: genome browser tracks -->
     <div class="project-visual">
       <svg viewBox="0 0 580 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <rect width="580" height="380" fill="var(--bg-surface)"/>
 
-        <!-- Title -->
-        <text x="36" y="34" font-size="11" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">Aging-gene suppression by cell type</text>
-        <text x="36" y="50" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">Fraction of 124 conserved aging genes downregulated in familial AD</text>
+        <!-- subtle grid -->
+        <line x1="0" y1="60" x2="580" y2="60" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="110" x2="580" y2="110" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="160" x2="580" y2="160" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="210" x2="580" y2="210" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="260" x2="580" y2="260" stroke="var(--border)" stroke-width="0.5"/>
+        <line x1="0" y1="310" x2="580" y2="310" stroke="var(--border)" stroke-width="0.5"/>
 
-        <!-- 50% reference line (chance) -->
-        <line x1="340" y1="64" x2="340" y2="312" stroke="var(--text-faint)" stroke-width="1" stroke-dasharray="3,3" opacity="0.6"/>
-        <text x="340" y="328" font-size="7.5" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">50%</text>
+        <!-- chr coordinate bar at top -->
+        <rect x="30" y="18" width="520" height="6" rx="3" fill="var(--border)" opacity="0.7"/>
+        <rect x="240" y="16" width="100" height="10" rx="4" fill="var(--accent)" opacity="0.5"/>
+        <text x="278" y="14" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="middle">Spib locus</text>
 
-        <!-- 0% axis -->
-        <line x1="150" y1="64" x2="150" y2="312" stroke="var(--border)" stroke-width="1"/>
-        <text x="150" y="328" font-size="7.5" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">0%</text>
-        <text x="530" y="328" font-size="7.5" fill="var(--text-faint)" font-family="JetBrains Mono,monospace" text-anchor="middle">100%</text>
+        <!-- Track labels + waveforms -->
+        <!-- WT tracks (text color) -->
+        <text x="18" y="48" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 WT1</text>
+        <path d="M30,55 Q80,55 95,45 Q110,35 125,55 Q160,55 175,42 Q185,32 200,55 Q240,55 260,38 Q275,24 292,38 Q308,55 340,55 Q360,48 375,55 Q420,55 440,44 Q450,36 462,55 L550,55" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.65"/>
+        <path d="M30,55 Q80,55 95,45 Q110,35 125,55 Q160,55 175,42 Q185,32 200,55 Q240,55 260,38 Q275,24 292,38 Q308,55 340,55 Q360,48 375,55 Q420,55 440,44 Q450,36 462,55 L550,55 L550,55 L30,55 Z" fill="var(--text)" opacity="0.07"/>
 
-        <!-- Excitatory Neuron — 0.699, sig (aging-like) -->
-        <text x="142" y="85" font-size="8.5" fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="end">Excitatory N</text>
-        <rect x="150" y="70" width="266" height="22" rx="3" fill="var(--accent)" opacity="0.95"/>
-        <text x="424" y="85" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace">70% &#42;</text>
+        <text x="18" y="98" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 WT2</text>
+        <path d="M30,105 Q75,105 92,96 Q107,87 122,105 Q158,105 172,93 Q182,83 198,105 Q238,105 258,90 Q273,76 290,90 Q307,105 338,105 Q358,99 373,105 Q418,105 438,95 Q448,87 460,105 L550,105" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.55"/>
+        <path d="M30,105 Q75,105 92,96 Q107,87 122,105 Q158,105 172,93 Q182,83 198,105 Q238,105 258,90 Q273,76 290,90 Q307,105 338,105 Q358,99 373,105 Q418,105 438,95 Q448,87 460,105 L550,105 L550,105 L30,105 Z" fill="var(--text)" opacity="0.05"/>
 
-        <!-- Inhibitory Neuron — 0.691, sig (aging-like) -->
-        <text x="142" y="127" font-size="8.5" fill="var(--text)" font-family="JetBrains Mono,monospace" text-anchor="end">Inhibitory N</text>
-        <rect x="150" y="112" width="263" height="22" rx="3" fill="var(--accent)" opacity="0.95"/>
-        <text x="421" y="127" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace">69% &#42;</text>
+        <!-- KO tracks (accent color) -->
+        <text x="18" y="148" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 KO1</text>
+        <path d="M30,155 Q70,155 85,138 Q100,118 118,155 Q152,155 165,136 Q177,118 195,155 Q235,155 252,130 Q268,108 288,130 Q305,155 335,155 Q352,142 368,155 Q412,155 430,137 Q442,120 457,155 L550,155" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.95"/>
+        <path d="M30,155 Q70,155 85,138 Q100,118 118,155 Q152,155 165,136 Q177,118 195,155 Q235,155 252,130 Q268,108 288,130 Q305,155 335,155 Q352,142 368,155 Q412,155 430,137 Q442,120 457,155 L550,155 L550,155 L30,155 Z" fill="var(--accent)" opacity="0.15"/>
 
-        <!-- Astrocyte — 0.585, n.s. -->
-        <text x="142" y="169" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">Astrocyte</text>
-        <rect x="150" y="154" width="222" height="22" rx="3" fill="var(--accent)" opacity="0.45"/>
-        <text x="380" y="169" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">59%</text>
+        <text x="18" y="198" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC1 KO2</text>
+        <path d="M30,205 Q68,205 83,189 Q98,170 116,205 Q150,205 163,187 Q175,169 193,205 Q233,205 250,181 Q266,159 286,181 Q303,205 333,205 Q350,193 366,205 Q410,205 428,188 Q440,171 455,205 L550,205" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.8"/>
+        <path d="M30,205 Q68,205 83,189 Q98,170 116,205 Q150,205 163,187 Q175,169 193,205 Q233,205 250,181 Q266,159 286,181 Q303,205 333,205 Q350,193 366,205 Q410,205 428,188 Q440,171 455,205 L550,205 L550,205 L30,205 Z" fill="var(--accent)" opacity="0.12"/>
 
-        <!-- Neural Progenitor — 0.427, anti-aging -->
-        <text x="142" y="211" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">Neural prog.</text>
-        <rect x="150" y="196" width="162" height="22" rx="3" fill="#D97B52" opacity="0.55"/>
-        <text x="320" y="211" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">43%</text>
+        <!-- cDC2 tracks -->
+        <text x="18" y="248" font-size="8" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC2 WT1</text>
+        <path d="M30,255 Q78,255 93,248 Q105,242 118,255 Q160,255 173,246 Q182,238 195,255 Q238,255 255,244 Q268,234 282,244 Q298,255 335,255 Q352,250 365,255 Q420,255 435,247 Q445,240 458,255 L550,255" fill="none" stroke="var(--text)" stroke-width="1.8" opacity="0.5"/>
+        <path d="M30,255 Q78,255 93,248 Q105,242 118,255 Q160,255 173,246 Q182,238 195,255 Q238,255 255,244 Q268,234 282,244 Q298,255 335,255 Q352,250 365,255 Q420,255 435,247 Q445,240 458,255 L550,255 L550,255 L30,255 Z" fill="var(--text)" opacity="0.04"/>
 
-        <!-- OPC — 0.372, anti-aging (underpowered) -->
-        <text x="142" y="253" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">OPC</text>
-        <rect x="150" y="238" width="141" height="22" rx="3" fill="#D97B52" opacity="0.45"/>
-        <text x="299" y="253" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">37%</text>
+        <text x="18" y="298" font-size="8" fill="var(--accent)" font-family="JetBrains Mono,monospace" text-anchor="end">cDC2 KO1</text>
+        <path d="M30,305 Q66,305 80,292 Q92,278 108,305 Q148,305 160,292 Q172,278 188,305 Q228,305 244,286 Q258,268 276,286 Q292,305 328,305 Q345,296 360,305 Q405,305 422,292 Q433,278 448,305 L550,305" fill="none" stroke="var(--accent)" stroke-width="2" opacity="0.75"/>
+        <path d="M30,305 Q66,305 80,292 Q92,278 108,305 Q148,305 160,292 Q172,278 188,305 Q228,305 244,286 Q258,268 276,286 Q292,305 328,305 Q345,296 360,305 Q405,305 422,292 Q433,278 448,305 L550,305 L550,305 L30,305 Z" fill="var(--accent)" opacity="0.12"/>
 
-        <!-- Cycling — 0.172, anti-aging -->
-        <text x="142" y="295" font-size="8.5" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" text-anchor="end">Cycling</text>
-        <rect x="150" y="280" width="65" height="22" rx="3" fill="#D97B52" opacity="0.7"/>
-        <text x="223" y="295" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">17%</text>
+        <!-- gene annotation bar -->
+        <rect x="30" y="326" width="520" height="2" rx="1" fill="var(--text-faint)" opacity="0.3"/>
+        <rect x="160" y="323" width="55" height="8" rx="3" fill="var(--accent)" opacity="0.45"/>
+        <rect x="270" y="323" width="70" height="8" rx="3" fill="var(--accent)" opacity="0.55"/>
+        <rect x="400" y="323" width="48" height="8" rx="3" fill="var(--accent)" opacity="0.4"/>
+        <text x="30" y="346" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">mm10 genes</text>
+        <text x="175" y="346" font-size="7" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">Spib</text>
+        <text x="285" y="346" font-size="7" fill="var(--accent)" font-family="JetBrains Mono,monospace" opacity="0.7">Myb</text>
+        <text x="410" y="346" font-size="7" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">Irf4</text>
 
-        <!-- baseline -->
-        <line x1="150" y1="312" x2="530" y2="312" stroke="var(--border)" stroke-width="1"/>
-
-        <!-- legend -->
-        <rect x="150" y="352" width="9" height="9" rx="2" fill="var(--accent)" opacity="0.9"/>
-        <text x="163" y="360" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">aging-like (&gt;50% down)</text>
-        <rect x="320" y="352" width="9" height="9" rx="2" fill="#D97B52" opacity="0.7"/>
-        <text x="333" y="360" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">anti-aging</text>
-        <text x="430" y="360" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">&#42; padj &lt; 0.05</text>
+        <!-- condition legend -->
+        <rect x="460" y="356" width="8" height="8" rx="2" fill="var(--text)" opacity="0.5"/>
+        <text x="472" y="363" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">WT</text>
+        <rect x="500" y="356" width="8" height="8" rx="2" fill="var(--accent)" opacity="0.7"/>
+        <text x="512" y="363" font-size="8" fill="var(--text-faint)" font-family="DM Sans,sans-serif">KO</text>
       </svg>
     </div>
 
     <!-- Content -->
     <div class="project-body">
-      <div class="project-num">04 / scRNA-seq · aging signatures</div>
-      <h3 class="project-title">Aging Signatures in Familial Alzheimer's Organoids</h3>
+      <div class="project-num">03 / ATAC-seq</div>
+      <h3 class="project-title">HDAC1 Chromatin Accessibility in Dendritic Cells</h3>
       <p class="project-desc">
-        Single-cell reanalysis of a public iPSC-derived cortical-organoid dataset (GEO: GSE301700) asking whether familial AD mutations — PSEN1ΔE9, PSEN1M146V, APPswe — drive aging-like transcriptional change. Pseudobulk DESeq2 across ~56k cells / 14 samples, scored against the 124 conserved aging genes (Jeffries et al., Nature 2025) per cell type. The aging core is significantly suppressed in excitatory and inhibitory neurons (padj 3e-7 / 5e-4), driven by PSEN1M146V and APPswe — mirroring an in-house APOE4 analysis.
+        End-to-end ATAC-seq pipeline in Nextflow DSL2 — from raw reads through QC, alignment, mitochondrial filtering, peak calling with MACS3, and DESeq2 differential accessibility. Integrates paired RNA-seq to map concordant chromatin and expression changes, reproducing published Figure 6 panels from the HDAC1 dendritic cell study.
       </p>
       <div class="project-tags">
-        <span class="tag">Seurat v5</span>
-        <span class="tag">Pseudobulk</span>
+        <span class="tag">Nextflow</span>
+        <span class="tag">Bowtie2</span>
+        <span class="tag">MACS3</span>
         <span class="tag">DESeq2</span>
-        <span class="tag">fgsea</span>
-        <span class="tag">scRNA-seq</span>
+        <span class="tag">HOMER</span>
         <span class="tag">R</span>
-        <span class="tag">GEO</span>
+        <span class="tag">RNA-ATAC</span>
+      </div>
+      <a href="https://github.com/perhapsstrawberries/hdac1-atac-seq-analysis" target="_blank" class="project-link">
+        View repository
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Featured: seqstatx — sequence statistics CLI (PyPI) ── -->
+  <div class="project-featured" style="margin-top:16px;">
+
+    <!-- Visual: terminal showing seqstatx output -->
+    <div class="project-visual">
+      <svg viewBox="0 0 580 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="580" height="380" fill="var(--bg-surface)"/>
+
+        <!-- terminal window -->
+        <rect x="40" y="46" width="500" height="288" rx="10" fill="#16161f"/>
+        <!-- title bar -->
+        <rect x="40" y="46" width="500" height="28" rx="10" fill="#21222c"/>
+        <rect x="40" y="62" width="500" height="12" fill="#21222c"/>
+        <circle cx="62" cy="60" r="5" fill="#ff5f56"/>
+        <circle cx="80" cy="60" r="5" fill="#ffbd2e"/>
+        <circle cx="98" cy="60" r="5" fill="#27c93f"/>
+        <text x="290" y="64" font-size="10" fill="#6b6d7c" font-family="JetBrains Mono,monospace" text-anchor="middle">seqstatx — bash</text>
+
+        <!-- command -->
+        <text x="64" y="106" font-size="12" font-family="JetBrains Mono,monospace"><tspan fill="#27c93f">$</tspan> <tspan fill="#c8cad8">seqstatx *.fastq.gz genome.fa</tspan></text>
+
+        <!-- table header -->
+        <text x="64"  y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">file</text>
+        <text x="250" y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">seqs</text>
+        <text x="340" y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">gc%</text>
+        <text x="430" y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">N50</text>
+        <line x1="64" y1="150" x2="512" y2="150" stroke="#2c2d3a" stroke-width="1"/>
+
+        <!-- row 1 -->
+        <text x="64"  y="174" font-size="10.5" fill="#9aa0b3" font-family="JetBrains Mono,monospace">reads.fastq.gz</text>
+        <text x="250" y="174" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">1.0e7</text>
+        <text x="340" y="174" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">50.2</text>
+        <text x="430" y="174" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">151</text>
+
+        <!-- row 2 -->
+        <text x="64"  y="196" font-size="10.5" fill="#9aa0b3" font-family="JetBrains Mono,monospace">genome.fa</text>
+        <text x="250" y="196" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">194</text>
+        <text x="340" y="196" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">40.9</text>
+        <text x="430" y="196" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">153M</text>
+
+        <!-- second command -->
+        <text x="64" y="240" font-size="12" font-family="JetBrains Mono,monospace"><tspan fill="#27c93f">$</tspan> <tspan fill="#c8cad8">pip install seqstatx</tspan></text>
+
+        <!-- status comment -->
+        <text x="64" y="280" font-size="10.5" fill="#5c6370" font-family="JetBrains Mono,monospace"># pure python · zero deps · CI green 3.10–3.13</text>
+
+        <!-- blinking cursor -->
+        <rect x="64" y="300" width="8" height="14" fill="#27c93f" opacity="0.9"/>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="project-body">
+      <div class="project-num">04 / tooling · CLI + PyPI</div>
+      <h3 class="project-title">seqstatx — Sequence Statistics CLI</h3>
+      <p class="project-desc">
+        A fast command-line tool for FASTA/FASTQ summary statistics — N50, N90, GC%, and length distributions — on plain or gzipped inputs. Pure Python 3.10+ with zero dependencies, so it runs in any HPC or Conda environment without compiled binaries. Published to PyPI (<code>pip install seqstatx</code>) with a pytest suite and GitHub Actions CI passing across Python 3.10–3.13. Demonstrates packaging, testing, and release engineering alongside the analysis work.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Python</span>
+        <span class="tag">CLI</span>
+        <span class="tag">PyPI</span>
+        <span class="tag">pytest</span>
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">FASTA/FASTQ</span>
       </div>
       <div class="project-links">
-        <a href="https://github.com/perhapsstrawberries/familial-ad-aging-scrnaseq" target="_blank" class="project-link">
+        <a href="https://github.com/perhapsstrawberries/seqstats" target="_blank" class="project-link">
           View repository
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
-        <a href="https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE301700" target="_blank" class="project-link secondary">
-          GEO: GSE301700
+        <a href="https://pypi.org/project/seqstatx/" target="_blank" class="project-link secondary">
+          PyPI: seqstatx
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
         </a>
       </div>
