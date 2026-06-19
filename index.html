@@ -429,7 +429,7 @@
       <div class="project-num">01 / scRNA-seq · aging signatures</div>
       <h3 class="project-title">Aging Signatures in Familial Alzheimer's Organoids</h3>
       <p class="project-desc">
-        Single-cell reanalysis of a public iPSC-derived cortical-organoid dataset (GEO: GSE301700) asking whether familial AD mutations — PSEN1ΔE9, PSEN1M146V, APPswe — drive aging-like transcriptional change. Pseudobulk DESeq2 across ~56k cells / 14 samples, scored against the 124 conserved aging genes (Jeffries et al., Nature 2025) per cell type. The aging core is significantly suppressed in excitatory and inhibitory neurons (padj 3e-7 / 5e-4), driven by PSEN1M146V and APPswe — mirroring an in-house APOE4 analysis.
+        Single-cell reanalysis of a public iPSC-derived cortical-organoid dataset (GEO: GSE301700) asking whether familial AD mutations — PSEN1ΔE9, PSEN1M146V, APPswe — drive aging-like transcriptional change. Pseudobulk DESeq2 across ~56k cells / 14 samples, scored against the 124 conserved aging genes (Jeffries et al., Nature 2025) per cell type. The aging core is significantly suppressed in excitatory and inhibitory neurons (padj 3e-7 / 5e-4), driven by PSEN1M146V and APPswe.
       </p>
       <div class="project-tags">
         <span class="tag">Seurat v5</span>
@@ -641,51 +641,55 @@
   <!-- ── Featured: seqstatx — sequence statistics CLI (PyPI) ── -->
   <div class="project-featured" style="margin-top:16px;">
 
-    <!-- Visual: terminal showing seqstatx output -->
+    <!-- Visual: sequence-length distribution (what N50 summarizes) -->
     <div class="project-visual">
       <svg viewBox="0 0 580 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <rect width="580" height="380" fill="var(--bg-surface)"/>
 
-        <!-- terminal window -->
-        <rect x="40" y="46" width="500" height="288" rx="10" fill="#16161f"/>
-        <!-- title bar -->
-        <rect x="40" y="46" width="500" height="28" rx="10" fill="#21222c"/>
-        <rect x="40" y="62" width="500" height="12" fill="#21222c"/>
-        <circle cx="62" cy="60" r="5" fill="#ff5f56"/>
-        <circle cx="80" cy="60" r="5" fill="#ffbd2e"/>
-        <circle cx="98" cy="60" r="5" fill="#27c93f"/>
-        <text x="290" y="64" font-size="10" fill="#6b6d7c" font-family="JetBrains Mono,monospace" text-anchor="middle">seqstatx — bash</text>
+        <!-- title -->
+        <text x="36" y="34" font-size="11" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">Sequence-length distribution</text>
+        <text x="36" y="50" font-size="9" fill="var(--text-faint)" font-family="DM Sans,sans-serif">seqstatx · N50 / N90 / GC% over FASTA &amp; FASTQ</text>
 
-        <!-- command -->
-        <text x="64" y="106" font-size="12" font-family="JetBrains Mono,monospace"><tspan fill="#27c93f">$</tspan> <tspan fill="#c8cad8">seqstatx *.fastq.gz genome.fa</tspan></text>
+        <!-- axes -->
+        <line x1="64" y1="80" x2="64" y2="300" stroke="var(--border)" stroke-width="1"/>
+        <line x1="64" y1="300" x2="545" y2="300" stroke="var(--border)" stroke-width="1"/>
 
-        <!-- table header -->
-        <text x="64"  y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">file</text>
-        <text x="250" y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">seqs</text>
-        <text x="340" y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">gc%</text>
-        <text x="430" y="140" font-size="10.5" fill="#6b6d7c" font-family="JetBrains Mono,monospace">N50</text>
-        <line x1="64" y1="150" x2="512" y2="150" stroke="#2c2d3a" stroke-width="1"/>
+        <!-- histogram bars -->
+        <g fill="var(--accent)" opacity="0.85">
+          <rect x="80"  y="260" width="20" height="40"/>
+          <rect x="105" y="205" width="20" height="95"/>
+          <rect x="130" y="150" width="20" height="150"/>
+          <rect x="155" y="160" width="20" height="140"/>
+          <rect x="180" y="180" width="20" height="120"/>
+          <rect x="205" y="200" width="20" height="100"/>
+          <rect x="230" y="216" width="20" height="84"/>
+          <rect x="255" y="230" width="20" height="70"/>
+          <rect x="280" y="242" width="20" height="58"/>
+          <rect x="305" y="252" width="20" height="48"/>
+          <rect x="330" y="260" width="20" height="40"/>
+          <rect x="355" y="267" width="20" height="33"/>
+          <rect x="380" y="273" width="20" height="27"/>
+          <rect x="405" y="278" width="20" height="22"/>
+          <rect x="430" y="283" width="20" height="17"/>
+          <rect x="455" y="287" width="20" height="13"/>
+          <rect x="480" y="291" width="20" height="9"/>
+          <rect x="505" y="294" width="20" height="6"/>
+        </g>
 
-        <!-- row 1 -->
-        <text x="64"  y="174" font-size="10.5" fill="#9aa0b3" font-family="JetBrains Mono,monospace">reads.fastq.gz</text>
-        <text x="250" y="174" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">1.0e7</text>
-        <text x="340" y="174" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">50.2</text>
-        <text x="430" y="174" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">151</text>
+        <!-- N50 / N90 marker lines -->
+        <line x1="247" y1="92"  x2="247" y2="300" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="252" y="100" font-size="10" fill="var(--accent)" font-family="JetBrains Mono,monospace">N50</text>
+        <line x1="372" y1="130" x2="372" y2="300" stroke="var(--text-faint)" stroke-width="1.5" stroke-dasharray="4 3"/>
+        <text x="377" y="138" font-size="10" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">N90</text>
 
-        <!-- row 2 -->
-        <text x="64"  y="196" font-size="10.5" fill="#9aa0b3" font-family="JetBrains Mono,monospace">genome.fa</text>
-        <text x="250" y="196" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">194</text>
-        <text x="340" y="196" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">40.9</text>
-        <text x="430" y="196" font-size="10.5" fill="#7fb3ff" font-family="JetBrains Mono,monospace">153M</text>
+        <!-- axis labels -->
+        <text x="305" y="324" font-size="9" fill="var(--text-faint)" font-family="DM Sans,sans-serif" text-anchor="middle">sequence length →</text>
+        <text x="26" y="190" font-size="9" fill="var(--text-faint)" font-family="DM Sans,sans-serif" text-anchor="middle" transform="rotate(-90 26 190)">sequence count</text>
 
-        <!-- second command -->
-        <text x="64" y="240" font-size="12" font-family="JetBrains Mono,monospace"><tspan fill="#27c93f">$</tspan> <tspan fill="#c8cad8">pip install seqstatx</tspan></text>
-
-        <!-- status comment -->
-        <text x="64" y="280" font-size="10.5" fill="#5c6370" font-family="JetBrains Mono,monospace"># pure python · zero deps · CI green 3.10–3.13</text>
-
-        <!-- blinking cursor -->
-        <rect x="64" y="300" width="8" height="14" fill="#27c93f" opacity="0.9"/>
+        <!-- install chip + status -->
+        <rect x="64" y="344" width="186" height="26" rx="6" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+        <text x="78" y="361" font-size="11" font-family="JetBrains Mono,monospace"><tspan fill="var(--accent)">$</tspan> <tspan fill="var(--text)">pip install seqstatx</tspan></text>
+        <text x="266" y="361" font-size="10" fill="var(--text-faint)" font-family="DM Sans,sans-serif">pure Python · 0 deps · CI 3.10–3.13</text>
       </svg>
     </div>
 
