@@ -721,6 +721,91 @@
     </div>
   </div>
 
+  <!-- ── Featured: Ensembl Gene Explorer — web app (Flask + AJAX + charts) ── -->
+  <div class="project-featured" style="margin-top:16px;">
+
+    <!-- Visual: browser-window mockup of the live app (histogram + table) -->
+    <div class="project-visual">
+      <svg viewBox="0 0 580 380" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <rect width="580" height="380" fill="var(--bg-surface)"/>
+
+        <!-- title (kept inside the safe ~[88,492] band; slice crops the outer edges) -->
+        <text x="90" y="34" font-size="11" fill="var(--text-muted)" font-family="JetBrains Mono,monospace" letter-spacing="0.06em">Interactive gene explorer</text>
+        <text x="90" y="50" font-size="9" fill="var(--text-faint)" font-family="DM Sans,sans-serif">Flask · AJAX · Google Charts · Ensembl REST</text>
+
+        <!-- browser window (frame intentionally bleeds past the crop edges) -->
+        <rect x="56" y="58" width="468" height="286" rx="10" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+        <path d="M56 68 a10 10 0 0 1 10 -10 h448 a10 10 0 0 1 10 10 v16 h-468 z" fill="var(--bg-surface)"/>
+        <circle cx="78" cy="71" r="4" fill="var(--border)"/>
+        <circle cx="92" cy="71" r="4" fill="var(--border)"/>
+        <circle cx="106" cy="71" r="4" fill="var(--border)"/>
+        <rect x="130" y="63" width="360" height="16" rx="8" fill="var(--bg-card)" stroke="var(--border)" stroke-width="1"/>
+        <text x="140" y="74" font-size="8" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">localhost:5054 / Ensembl Gene Explorer</text>
+
+        <!-- search row -->
+        <rect x="92" y="96" width="120" height="22" rx="4" fill="var(--bg-surface)" stroke="var(--border)" stroke-width="1"/>
+        <text x="102" y="111" font-size="11" fill="var(--text)" font-family="JetBrains Mono,monospace">BRCA2</text>
+        <rect x="220" y="96" width="80" height="22" rx="4" fill="var(--accent)"/>
+        <text x="260" y="111" font-size="10" fill="#ffffff" font-family="DM Sans,sans-serif" text-anchor="middle">explore</text>
+        <text x="312" y="111" font-size="9" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">↻ no reload (AJAX)</text>
+
+        <!-- left: mini exon-length histogram -->
+        <text x="92" y="146" font-size="9" fill="var(--text-muted)" font-family="JetBrains Mono,monospace">exon lengths</text>
+        <line x1="92" y1="300" x2="268" y2="300" stroke="var(--border)" stroke-width="1"/>
+        <g fill="var(--accent)" opacity="0.85">
+          <rect x="98"  y="230" width="20" height="70"/>
+          <rect x="126" y="170" width="20" height="130"/>
+          <rect x="154" y="140" width="20" height="160"/>
+          <rect x="182" y="190" width="20" height="110"/>
+          <rect x="210" y="232" width="20" height="68"/>
+          <rect x="238" y="260" width="20" height="40"/>
+        </g>
+
+        <!-- right: mini transcript table -->
+        <text x="300" y="146" font-size="9" fill="var(--text-muted)" font-family="JetBrains Mono,monospace">transcripts (sorted)</text>
+        <text x="300" y="168" font-size="9" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">transcript</text>
+        <text x="452" y="168" font-size="9" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">len</text>
+        <line x1="300" y1="174" x2="492" y2="174" stroke="var(--border)" stroke-width="1"/>
+        <g font-size="9" font-family="JetBrains Mono,monospace">
+          <text x="300" y="192" fill="var(--text)">ENST00000714409</text><text x="452" y="192" fill="var(--accent)">12,077</text>
+          <text x="300" y="210" fill="var(--text)">ENST00000380152</text><text x="452" y="210" fill="var(--accent)">11,954</text>
+          <text x="300" y="228" fill="var(--text)">ENST00000544455</text><text x="452" y="228" fill="var(--accent)">11,386</text>
+          <text x="300" y="246" fill="var(--text)">ENST00000530893</text><text x="452" y="246" fill="var(--accent)">7,069</text>
+        </g>
+
+        <!-- request path caption -->
+        <text x="92" y="326" font-size="9" fill="var(--text-faint)" font-family="JetBrains Mono,monospace">GET /exon_histogram · /transcripts → Ensembl REST</text>
+      </svg>
+    </div>
+
+    <!-- Content -->
+    <div class="project-body">
+      <div class="project-num">05 / web app · full-stack</div>
+      <h3 class="project-title">Ensembl Gene Explorer — AJAX + Charts</h3>
+      <p class="project-desc">
+        A Flask web app that queries the public Ensembl REST API (no key) and renders results live with jQuery AJAX and Google Charts — no page reloads. Enter a gene symbol to get a histogram of its exon lengths and a sorted table of its transcripts. Client- and server-side input validation, graceful error handling, and a clean request path: browser → Flask → Ensembl → JSON → chart/table. Built from database coursework and generalized off a private DB to a credential-free public API.
+      </p>
+      <div class="project-tags">
+        <span class="tag">Flask</span>
+        <span class="tag">Python</span>
+        <span class="tag">jQuery / AJAX</span>
+        <span class="tag">Google Charts</span>
+        <span class="tag">REST API</span>
+        <span class="tag">Genomics</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/perhapsstrawberries/ensembl-gene-explorer" target="_blank" class="project-link">
+          View repository
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+        <a href="https://rest.ensembl.org" target="_blank" class="project-link secondary">
+          Ensembl REST API
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- Also see -->
   <div style="margin-top:32px; padding:28px 36px; background:var(--bg-surface); border:1px solid var(--border); border-radius:12px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
     <div>
