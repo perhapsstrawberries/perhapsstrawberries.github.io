@@ -187,12 +187,12 @@
     .project-visual {
       background: var(--bg-surface); position: relative;
       overflow: hidden; min-height: 300px;
+      display: flex; align-items: center; justify-content: center;
     }
     .project-sm .project-visual { min-height: 220px; }
 
     .project-visual svg {
-      position: absolute; top: 0; left: 0;
-      width: 100%; height: 100%;
+      width: 100%; height: auto; display: block;
     }
 
     .project-body { padding: 44px; display: flex; flex-direction: column; justify-content: center; }
